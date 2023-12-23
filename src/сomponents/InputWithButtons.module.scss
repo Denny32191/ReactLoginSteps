@@ -1,0 +1,99 @@
+
+.header {
+    width: 680px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 60px;
+
+}
+.steps__loading{
+    position: relative;
+    justify-content: space-between;
+    display: flex;
+    width: 680px;
+    height: 8px;
+}
+.part__one, .part__two, .part__three {
+    flex: 1;
+    background-color: whitesmoke;
+ 
+  }
+  .button__one{
+    position: relative;
+    width: 20px;
+    height: 20px;
+    bottom: 4px;
+    border-radius: 50%;
+    background-color: rgb(94, 94, 216);
+    border: none;
+    outline: none;
+  }
+  
+  .button__one::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: white;
+  }
+  .button__two, .button__three {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    bottom: 4px;
+    border-radius: 50%;
+    background-color: rgb(199, 199, 199);
+    border: none;
+    outline: none;
+
+  }
+  .input__block{
+    width: 300px;
+    height: 456px;
+
+.input__list {
+    padding: 0px;
+}
+  }
+  .input__item {
+    width:  300px;
+    height: 90px;
+    border-radius: 4px;
+    border: 1px;
+    outline: none;
+    list-style-type:none;
+    padding-bottom: 10px;
+    
+    
+  }
+  .input {
+    width: 240px;
+    height: 30px;
+  }
+  .block__button{
+    width: 680px;
+    display: flex;
+    justify-content: space-between;
+
+  }
+  .button__back {
+    width: 80px;
+    height: 40px;
+    background-color: white;
+    border: 1.5px solid #5558FA;
+    color:  #5558FA;
+  }
+  .button__next{
+    width: 80px;
+    height: 44px;
+    background: #5558FA;
+    border: none;
+    color: white;
+    border-radius: 10px;
+  }

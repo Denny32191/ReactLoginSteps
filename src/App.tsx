@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import  { Login } from './features/Login';
 import Persona from './сomponents/Persona';
-import StepThree from './сomponents/StepThree'
+import Preference from './сomponents/Preference'
 import styles from './App.module.scss'
 
 
@@ -16,7 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/second" element={<Persona/>}/>
-            <Route path="/three" element={<StepThree/>}/>
+            <Route path="/three" element={<Preference/>}/>
           </Routes>
         </div>
       </BrowserRouter>
