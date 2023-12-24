@@ -1,8 +1,13 @@
 import styles from "./Wizard.module.scss";
 import React from 'react';
 
-function Wizard(props) {
-  const { step } = props;
+interface StepProps {
+  page: string;
+  position: number
+  
+}
+
+function Wizard(props: StepProps) {
   return (
     <div>
       <div className={styles.header}>
@@ -18,4 +23,4 @@ function Wizard(props) {
     
   );
 }
-export default Wizard;
+export default Wizard;;
