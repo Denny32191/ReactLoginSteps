@@ -23,4 +23,4 @@ function Wizard(props: StepProps) {
     
   );
 }
-export default Wizard;;
+export default Wizard;
