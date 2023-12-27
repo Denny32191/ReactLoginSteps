@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import InputForm from "../../сomponents/Input/InputForm";
 import { ChangeEvent } from "react";
-import Wizard from "./../../сomponents/Wizard";
+
 
 const Personal: React.FC = () => {
   return (

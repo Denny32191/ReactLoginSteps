@@ -98,9 +98,9 @@ export const Login = () => {
             onChange={handleEmailChange}
           />
           
-          <ButtonForm type="submit"
+          <ButtonForm 
+          type="button"
            disabled={false}
-  
             >
               Начать
             </ButtonForm>

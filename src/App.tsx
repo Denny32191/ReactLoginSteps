@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { Login } from "./features/Login";
-import Personal from "./features/Stepper/Personal";
+import Personal from "./features/Personal/Personal";
 import Preference from "./features/Preference/Preference";
 import styles from "./App.module.scss";
 
