@@ -1,0 +1,96 @@
+
+// .header {
+//     width: 680px;
+//     height: 48px;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     margin-bottom: 60px;
+
+// }
+// .steps__loading{
+//     position: relative;
+//     justify-content: space-between;
+//     display: flex;
+//     width: 680px;
+//     height: 8px;
+// }
+// .part__one, .part__two, .part__three {
+//     flex: 1;
+//     background-color: whitesmoke;
+ 
+//   }
+//   .button__one{
+//     position: relative;
+//     width: 20px;
+//     height: 20px;
+//     bottom: 4px;
+//     border-radius: 50%;
+//     background-color: rgb(94, 94, 216);
+//     border: none;
+//     outline: none;
+//   }
+  
+//   .button__one::after {
+//     content: "";
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+//     width: 4px;
+//     height: 4px;
+//     border-radius: 50%;
+//     background-color: white;
+//   }
+//   .button__two, .button__three {
+//     position: relative;
+//     width: 20px;
+//     height: 20px;
+//     bottom: 4px;
+//     border-radius: 50%;
+//     background-color: rgb(199, 199, 199);
+//     border: none;
+//     outline: none;
+
+//   }
+  // .input__block{
+  //   width: 300px;
+  //   height: 456px;
+  // }
+
+  //  .input__item {
+    //  width:  300px;
+    //  height: 90px;
+    // border-radius: 4px;
+    // border: 1px;
+    //  outline: none;
+    //  list-style-type:none;
+    //  margin-bottom: 20px;
+
+    
+    
+  //  
+  input {
+    width: 240px;
+    height: 30px;
+    border: 1px;
+    border-radius: 4px;
+    outline: none;
+    list-style-type:none;
+    background-color:whitesmoke;
+    padding-left: 10px;
+    margin-bottom: 20px;
+  }
+  .error {
+    color: red; /* Задает красный цвет текста */
+    font-weight: bold; /* Выделяет текст полужирным */
+  }
+p{
+    margin-bottom: 20px;
+  }
+span {
+  margin-top: 10px;
+}
+
+
+

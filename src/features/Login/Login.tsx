@@ -4,8 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { RootState } from "../../app/store";
 import { setPhone, setEmail, setErrors } from "./loginSlice";
 import React from "react";
-import InputForm from "../../сomponents/InputForm";
-import ButtonForm from "../../сomponents/ButtonForm";
+import InputForm from "../../сomponents/Input/InputForm";
+import ButtonForm from "./../../сomponents/Button/ButtonForm"
 
 export const Login = () => {
   const dispatch = useDispatch();
@@ -26,10 +26,12 @@ export const Login = () => {
     dispatch(setErrors({ phone: e.target.value, email: "" }));
   };
   const navigate = useNavigate();
-  const handleClick = (e: React.FormEvent<HTMLFormElement> ) => {
+  const handleClick = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (phone === "" && email === "") {
-      dispatch(setErrors({ phone: "Введите номер телефона", email: "Введите email" }));
+      dispatch(
+        setErrors({ phone: "Введите номер телефона", email: "Введите email" })
+      );
     } else if (phone === "") {
       dispatch(setErrors({ phone: "Введите номер телефона" }));
     } else if (email === "") {
@@ -47,7 +49,6 @@ export const Login = () => {
     //   dispatch(setErrors({ phone: "", email: "" }));
     //   navigate("/second");
     // }
-    
   };
 
   return (
@@ -77,31 +78,33 @@ export const Login = () => {
       </div>
       <div className={styles.black__line}></div>
       <div className={styles.input__block}>
-      <form onSubmit={handleClick}>
-      <InputForm
-          type="text"
-          label="Номер Телефона"
-          value={phone}
-          name="phone"
-          placeholder="Введите номер телефона"
-          error={errors.phone === ""}
-          onChange={handlePhoneChange}
-          className={styles.input__phone}
+        <form onSubmit={handleClick}>
+          <InputForm
+            type="text"
+            label="Номер Телефона"
+            value={phone}
+            name="phone"
+            placeholder="Введите номер телефона"
+            error={false}
+            onChange={handlePhoneChange}
+          />
+          <InputForm
+            type="text"
+            label="Email"
+            value={email}
+            name="email"
+            placeholder="Введите email"
+            error={false}
+            onChange={handleEmailChange}
+          />
           
-        />
-        <InputForm
-          type="text"
-          label="Email"
-          value={email}
-          name="email"
-          placeholder="Введите email"
-          error={errors.email === ""}
-          onChange={handleEmailChange}
-          className={styles.input__email} 
-        />
-        <ButtonForm/>
-        
-      </form>
+          <ButtonForm type="submit"
+           disabled={false}
+  
+            >
+              Начать
+            </ButtonForm>
+        </form>
       </div>
     </div>
   );

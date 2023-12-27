@@ -1,0 +1,36 @@
+.block__button{
+    width: 680px;
+    display: flex;
+    justify-content: space-between;
+
+  }
+//   .button__back {
+//     width: 80px;
+//     height: 40px;
+//     background-color: white;
+//     border: 1.5px solid #5558FA;
+//     color:  #5558FA;
+//   }
+//   .button__next{
+//     width: 80px;
+//     height: 44px;
+//     background: #5558FA;
+//     border: none;
+//     color: white;
+//     border-radius: 10px;
+//   }
+//   .block__button{
+//     width: 680px;
+//     display: flex;
+//     justify-content: space-between;
+
+//   }
+  button {
+    width: 80px;
+         height: 44px;
+         background: #5558FA;
+         border: none;
+        color: white;
+        border-radius: 10px;
+        margin-top: 40px;
+  }

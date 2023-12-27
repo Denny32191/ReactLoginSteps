@@ -1,4 +1,5 @@
 import React, { ChangeEvent } from "react"
+import styles from "./InputForm.module.scss"
 
 interface InputProps {
     type: 'text' | 'number' | 'email ' | 'password' ;
@@ -6,9 +7,8 @@ interface InputProps {
     value: string | number;
     name: string;
     placeholder: string;
-    error: boolean;
-    disabled?: boolean;
-    className: string;
+    error: boolean
+    disabled?: boolean
     onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 const InputForm: React.FC <InputProps> = ({
@@ -19,13 +19,13 @@ const InputForm: React.FC <InputProps> = ({
     placeholder,
     error,
     disabled,
-    className,
     onChange
 }) => {
     return (
+          
+          <div className={styles.input__block}>
           <label htmlFor={label}>
-          <div >
-            <p>{label}</p>
+            <p >{label}</p>
             <input 
             type={type}
             value={value}
@@ -33,11 +33,12 @@ const InputForm: React.FC <InputProps> = ({
             placeholder={placeholder}
             disabled={disabled}
             onChange={onChange}
-            className={className}
+            
             />
-            <span>{error}</span>
+            {error &&<span className="error">Введите </span>}
+            </label>
           </div>
-          </label>
+          
     )
 }
 
