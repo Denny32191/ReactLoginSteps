@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { RootState } from "../../app/store";
 import { setPhone, setEmail, setErrors } from "./loginSlice";
 import React from "react";
+import InputForm from "../../сomponents/InputForm";
+import ButtonForm from "../../сomponents/ButtonForm";
 
 export const Login = () => {
   const dispatch = useDispatch();
@@ -74,42 +76,33 @@ export const Login = () => {
         </div>
       </div>
       <div className={styles.black__line}></div>
+      <div className={styles.input__block}>
       <form onSubmit={handleClick}>
-        <div style={{ marginLeft: "20px", marginBottom: "40px" }}>
-          <div className={styles.input__block}>
-            
-            <label>
-            <p>Номер телефона</p>
-              <input
-                onChange={handlePhoneChange}
-                type="tel"
-                name="username"
-                placeholder=""
-                className={styles.input_phone}
-                value={phone}
-              />
-            </label>
-            <p className={errors.phone && styles.error}>{errors.phone}</p>
-          </div>
-          <div className={styles.input__block}>
-            
-            <label>
-            <p>Email</p>
-              <input
-                type="text"
-                name="email"
-                className={styles.input_email}
-                onChange={handleEmailChange}
-                value={email}
-              />
-            </label>
-            <p className={errors.email && styles.error}>{errors.email}</p>
-          </div>
-          <button className={styles.button__start} type="submit">
-            Начать
-          </button>
-        </div>
+      <InputForm
+          type="text"
+          label="Номер Телефона"
+          value={phone}
+          name="phone"
+          placeholder="Введите номер телефона"
+          error={errors.phone === ""}
+          onChange={handlePhoneChange}
+          className={styles.input__phone}
+          
+        />
+        <InputForm
+          type="text"
+          label="Email"
+          value={email}
+          name="email"
+          placeholder="Введите email"
+          error={errors.email === ""}
+          onChange={handleEmailChange}
+          className={styles.input__email} 
+        />
+        <ButtonForm/>
+        
       </form>
+      </div>
     </div>
   );
 };
