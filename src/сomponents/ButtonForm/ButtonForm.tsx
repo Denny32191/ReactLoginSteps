@@ -2,7 +2,8 @@ import styles from './ButtonForm.module.scss'
 import React, { ChangeEvent } from "react"
 
 interface ButtonProps {
-  type: "button" | "reset" | "submit" | undefined
+  type: "submit" 
+  // | "reset" | "submit" | undefined
   disabled: boolean 
   children: React.ReactNode
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;

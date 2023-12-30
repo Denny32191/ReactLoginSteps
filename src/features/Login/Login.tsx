@@ -4,8 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { RootState } from "../../app/store";
 import { setPhone, setEmail, setErrors } from "./loginSlice";
 import React from "react";
-import InputForm from "../../сomponents/Input/InputForm";
-import ButtonForm from "./../../сomponents/Button/ButtonForm"
+import InputForm from "../../сomponents/InputForm/InputForm";
+import ButtonForm from "../../сomponents/ButtonForm/ButtonForm";
 
 export const Login = () => {
   const dispatch = useDispatch();
@@ -23,11 +23,12 @@ export const Login = () => {
   };
   const errors = useSelector((state: RootState) => state.login.errors);
   const handleErrors = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(setErrors({ phone: e.target.value, email: "" }));
+    dispatch(setErrors({ phone: "", email: "" }));
   };
   const navigate = useNavigate();
   const handleClick = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     if (phone === "" && email === "") {
       dispatch(
         setErrors({ phone: "Введите номер телефона", email: "Введите email" })
@@ -40,15 +41,6 @@ export const Login = () => {
       dispatch(setErrors({ phone: "", email: "" }));
       navigate("/second");
     }
-
-    // if (phone === "" || email === "") {
-    //   dispatch(
-    //     setErrors({ phone: "Введите номер телефона", email: "Введите email" })
-    //   );
-    // } else {
-    //   dispatch(setErrors({ phone: "", email: "" }));
-    //   navigate("/second");
-    // }
   };
 
   return (
@@ -76,36 +68,34 @@ export const Login = () => {
           </ul>
         </div>
       </div>
+
       <div className={styles.black__line}></div>
-      <div className={styles.input__block}>
-        <form onSubmit={handleClick}>
-          <InputForm
-            type="text"
-            label="Номер Телефона"
-            value={phone}
-            name="phone"
-            placeholder="Введите номер телефона"
-            error={false}
-            onChange={handlePhoneChange}
-          />
-          <InputForm
-            type="text"
-            label="Email"
-            value={email}
-            name="email"
-            placeholder="Введите email"
-            error={false}
-            onChange={handleEmailChange}
-          />
+      <form onSubmit={handleClick}>
+        <InputForm
+          type="text"
+          label="Номер Телефона"
+          value={phone}
+          name="phone"
+          placeholder="Введите номер телефона"
+          onChange={handlePhoneChange}
+          error={errors.phone}
           
-          <ButtonForm 
-          type="button"
-           disabled={false}
-            >
-              Начать
-            </ButtonForm>
-        </form>
-      </div>
+        />
+
+        <InputForm
+          type="text"
+          label="Email"
+          value={email}
+          name="email"
+          placeholder="Введите email"
+          onChange={handleEmailChange}
+          error={errors.email}
+        />
+
+        <ButtonForm type="submit" disabled={false}>
+          Начать
+        </ButtonForm>
+      </form>
     </div>
   );
 };

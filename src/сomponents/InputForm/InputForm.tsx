@@ -2,12 +2,12 @@ import React, { ChangeEvent } from "react";
 import styles from "./InputForm.module.scss";
 
 interface InputProps {
-  type: "text" | "number" | "email " | "password";
-  label: string;
-  value: string | number;
+  type: "text" | "number" | "email" | "password";
+  label: string ;
+  value: string ;
   name: string;
   placeholder: string;
-  error: boolean;
+  error?: string ;
   disabled?: boolean;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
@@ -21,10 +21,11 @@ const InputForm: React.FC<InputProps> = ({
   disabled,
   onChange,
 }) => {
+  console.log(error)
   return (
-    <div className={styles.input__block}>
       <label htmlFor={label}>
         <p className={styles.text}>{label}</p>
+       
         <input
           type={type}
           value={value}
@@ -32,10 +33,12 @@ const InputForm: React.FC<InputProps> = ({
           placeholder={placeholder}
           disabled={disabled}
           onChange={onChange}
+          
+          
+
         />
-        {error && <p className="error__red">Введите поля</p>}
+         {error && <p className={styles.error}>{error} </p>} 
       </label>
-    </div>
   );
 };
 

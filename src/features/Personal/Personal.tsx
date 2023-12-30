@@ -1,22 +1,16 @@
 import styles from "./Personal.module.scss";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import InputForm from "../../сomponents/Input/InputForm";
+import InputForm from "../../сomponents/InputForm/InputForm";
 import { ChangeEvent } from "react";
-
 
 const Personal: React.FC = () => {
   return (
     <div className={styles.step__one}>
       <form>
-        {/* <InputForm
-        />
-        <InputForm
+        <h1>eddasd</h1>
 
-        />
-        <InputForm
-
-        /> */}
+        
       </form>
     </div>
   );
