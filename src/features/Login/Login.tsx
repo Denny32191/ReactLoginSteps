@@ -50,7 +50,7 @@ export const Login = () => {
           <img src="" alt="" className={styles.logo} />
         </div>
         <div className={styles.contacts__info}>
-          <h3 className={styles.contacts__name}>Алексей Иванов</h3>
+          <h3 className={styles.contacts__name}>Денис Семянников</h3>
           <ul className={styles.nav__menu}>
             <li>
               {/* <img src="" alt="" style={{ height: '20px', width: '20px'}}/> */}

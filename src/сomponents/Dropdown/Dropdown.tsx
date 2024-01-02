@@ -1,13 +1,28 @@
-function Dropdown ()  {
+import { ChangeEvent } from 'react';
+import styles from './DropDown.module.scss'
+
+interface DropDownProps {
+  type?: "gender"
+  value?: string;
+  onChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
+}
+
+
+const DropDown: React.FC<DropDownProps>= ({
+ type,
+ value,
+ onChange
+}) => {
     return (
-        <div>
-        <label htmlFor="gender"></label>
-        <select id="gender" value={""} >
-          <option value="male">Male</option>
-          <option value="female">Female</option>
+        
+        <label htmlFor="gender" className={styles.label__gender} >
+        <select id="gender" value={value} onChange={onChange} className={styles.select__gender} >
+          <option value="male" className={styles.option__gender}>Male</option>
+          <option value="female"className={styles.option__gender}>Female</option>
         </select>
-      </div>
+        </label>
+      
     )
 }
-export default Dropdown;
+export default DropDown;
 

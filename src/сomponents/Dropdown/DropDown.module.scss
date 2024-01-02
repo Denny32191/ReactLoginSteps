@@ -1,0 +1,40 @@
+// .select__container {
+//     width: 240px;
+//     height: 30px;
+//     border: 1px;
+//     border-radius: 4px;
+//     outline: none;
+//     list-style-type:none;
+//     background-color:whitesmoke;
+//     padding-left: 10px;
+//     margin-bottom: 20px;
+// }
+// .option__choice{
+//     border-radius: 1px;
+//     font-size: 1rem;;
+// }
+.label__gender {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .select__gender {
+    width: 252px;
+       height: 30px;
+        border: 1px;
+       border-radius: 4px;
+        outline: none;
+       list-style-type:none;
+       background-color:whitesmoke;
+         padding-left: 10px;
+         margin-bottom: 20px;
+  }
+  
+  .select__gender:focus {
+    outline: none;
+    box-shadow: 0 0 3px 2px #bbb; /* Добавляем эффект при фокусе на выпадающем списке */
+  }
+  .option__gender{
+    width: 240px;
+    height: 30px;
+  }

@@ -1,25 +1,25 @@
-.header {
+.label {
     width: 680px;
     height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     margin-bottom: 60px;
 
 }
 .steps__loading{
-    position: relative;
-    justify-content: space-between;
     display: flex;
+    justify-content: space-between;
     width: 680px;
     height: 8px;
+
 }
 .part__one, .part__two, .part__three {
     flex: 1;
     background-color: whitesmoke;
+    display: flex;
+    position: relative;
+    top: 40px;
  
   }
-  .button__one{
+  .button__one {
     position: relative;
     width: 20px;
     height: 20px;
@@ -28,6 +28,7 @@
     background-color: rgb(94, 94, 216);
     border: none;
     outline: none;
+
   }
   
   .button__one::after {
@@ -41,8 +42,9 @@
     border-radius: 50%;
     background-color: white;
   }
-  .button__two, .button__three {
+ .button__three {
     position: relative;
+    display: flex;
     width: 20px;
     height: 20px;
     bottom: 4px;
@@ -51,4 +53,15 @@
     border: none;
     outline: none;
 
+  }
+  .button__two {
+    position: relative;
+    display: flex;
+    width: 20px;
+    height: 20px;
+    bottom: 4px;
+    border-radius: 50%;
+    background-color: rgb(199, 199, 199);
+    border: none;
+    outline: none;
   }

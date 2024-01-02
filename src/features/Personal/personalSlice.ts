@@ -3,19 +3,19 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export  type PersonalState = {
     nickname: string;
-    name: string;
+    username: string;
     surname:string;
     gender:string;
     errors: {
         nickname?: string;
-        name?: string;
+        username?: string;
         surname?:string;
         gender?:string;
 }
 }
 const initialState: PersonalState = {
     nickname: '',
-    name: '',
+    username: '',
     surname: '',
     gender: "",
     errors: {},
@@ -28,8 +28,8 @@ export const personalSlice = createSlice ({
         setNickName: (state, action: PayloadAction<string>) => {
             state.nickname = action.payload;
           },
-          setName: (state, action: PayloadAction<string>) => {
-            state.name = action.payload;
+          setUserName: (state, action: PayloadAction<string>) => {
+            state.username = action.payload;
           },
           setSurName: (state, action: PayloadAction<string>) => {
             state.surname = action.payload;
@@ -42,5 +42,5 @@ export const personalSlice = createSlice ({
           }
         },
 });
-export const { setNickName, setName, setSurName,setGender, setErrors} = personalSlice.actions
+export const { setNickName, setUserName, setSurName,setGender, setErrors} = personalSlice.actions
 export const personalReducer = personalSlice.reducer;
