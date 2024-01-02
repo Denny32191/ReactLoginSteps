@@ -37,7 +37,7 @@ export const personalSlice = createSlice ({
           setGender:  (state, action: PayloadAction<string>) => {
             state.gender = action.payload
           },
-          setErrors: (state, action: PayloadAction<{nickname?: string,name?: string, surname?: string, gender?: string }>) => {
+          setErrors: (state, action: PayloadAction<{nickname?: string,username?: string, surname?: string, gender?: string }>) => {
             state.errors = action.payload
           }
         },

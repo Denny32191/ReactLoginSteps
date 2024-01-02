@@ -33,9 +33,6 @@ const InputForm: React.FC<InputProps> = ({
           placeholder={placeholder}
           disabled={disabled}
           onChange={onChange}
-          
-          
-
         />
          {error && <p className={styles.error}>{error} </p>} 
       </label>

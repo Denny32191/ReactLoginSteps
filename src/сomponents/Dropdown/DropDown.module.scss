@@ -13,11 +13,12 @@
 //     border-radius: 1px;
 //     font-size: 1rem;;
 // }
-.label__gender {
-    display: block;
-    margin-bottom: 10px;
-  }
-  
+
+
+
+
+
+
   .select__gender {
     width: 252px;
        height: 30px;
@@ -32,9 +33,14 @@
   
   .select__gender:focus {
     outline: none;
-    box-shadow: 0 0 3px 2px #bbb; /* Добавляем эффект при фокусе на выпадающем списке */
+    box-shadow: 0 0 3px 2px #bbb; 
   }
-  .option__gender{
+  .option__male{
     width: 240px;
     height: 30px;
+  }
+  .error {
+    margin-bottom: 10px;
+    color: rgb(206, 0, 0); /* Задает красный цвет текста */
+    font-weight: bold; /* Выделяет текст полужирным */
   }

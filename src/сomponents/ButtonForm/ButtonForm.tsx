@@ -16,7 +16,7 @@ const ButtonForm: React.FC<ButtonProps> = ({
   onClick
 }) => {
   return (
-    <div className={styles.block__button}>
+    <div className={styles.button}>
       <button 
         type={type}
         disabled={disabled}
