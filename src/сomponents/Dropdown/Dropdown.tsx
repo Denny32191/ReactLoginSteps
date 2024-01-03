@@ -2,23 +2,16 @@ import { ChangeEvent } from "react";
 import styles from "./DropDown.module.scss";
 
 interface DropDownProps {
- 
-    gender?: string;
-    required?: string;
-    value?: string;
-    name?: string;
+  value?: string;
+  label?: string;
     error?: string;
-    disabled?: boolean;
     onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
-  
 }
 
 const DropDown: React.FC<DropDownProps> = ({
-  gender,
-required,
-  name,
   error,
-  disabled,
+  value,
+  label,
   onChange,
 }) => {
   return (
@@ -26,12 +19,12 @@ required,
       <select
         id="gender"
         
-        name={name}
+        
         onChange={onChange}
         className={styles.select__gender}
-        disabled={disabled}
+
       >
-        
+        <option value="" disabled selected hidden>Выберите пол</option>
         <option value="male" className={styles.option__male}>
           Male
         </option>

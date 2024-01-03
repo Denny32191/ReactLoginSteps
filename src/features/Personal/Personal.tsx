@@ -98,11 +98,12 @@ const handleClick = (e: React.FormEvent<HTMLFormElement>) => {
         <DropDown
         onChange={handleGender}
         error={errors.gender}
-        name="Выберите Пол"
+        value={gender}
+
         />
         
         <div className={styles.button__block}>
-        <ButtonForm type="submit" disabled={false}>
+        <ButtonForm type="submit"  disabled={false}>
           Назад
         </ButtonForm>
         <ButtonForm type="submit" disabled={false}>

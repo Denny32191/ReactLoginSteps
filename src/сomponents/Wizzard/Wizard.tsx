@@ -1,8 +1,9 @@
 import styles from "./Wizard.module.scss";
 import React from "react";
 
-interface StepStage {
-  type?: "text" | "number" | "email " | "password";
+interface WizardStage {
+  type?: number;
+  // "text" | "number" | "email " | "password";
   label?: string;
   value?: string | number;
   name?: string;
@@ -12,7 +13,7 @@ interface StepStage {
   // onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Wizard: React.FC<StepStage> = ({
+const Wizard: React.FC<WizardStage> = ({
   type,
   label,
   value,
