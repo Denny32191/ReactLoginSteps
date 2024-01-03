@@ -66,8 +66,7 @@ const handleClick = (e: React.FormEvent<HTMLFormElement>) => {
       <div className={styles.header}>
       <Wizard/>
       </div>
-      <form onSubmit={handleClick}>
-        <div className={styles.form__block}>
+      <form onSubmit={handleClick} className={styles.form__block}>
         <InputForm
           type="text"
           label="Никнейм"
@@ -99,8 +98,9 @@ const handleClick = (e: React.FormEvent<HTMLFormElement>) => {
         <DropDown
         onChange={handleGender}
         error={errors.gender}
+        name="Выберите Пол"
         />
-        </div>
+        
         <div className={styles.button__block}>
         <ButtonForm type="submit" disabled={false}>
           Назад
