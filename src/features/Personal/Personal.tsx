@@ -13,7 +13,8 @@ import {
 import React from "react";
 import InputForm from "../../сomponents/InputForm/InputForm";
 import ButtonForm from "./../../сomponents/ButtonForm/ButtonForm";
-import DropDown from "../../сomponents/DropDown/DropDown";
+
+import Select from "../../сomponents/DropDown/Select";
 
 export const Personal = () => {
   const dispatch = useDispatch();
@@ -35,8 +36,8 @@ export const Personal = () => {
     dispatch(setSurName(e.target.value));
   };
   const gender = useSelector((state: RootState) => state.personal.gender);
-  const handleGender = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    dispatch(setGender(e.target.value));
+  const handleGender = (value: string) => {
+    dispatch(setGender(value));
   };
   const errors = useSelector((state: RootState) => state.personal.errors);
   const handleErrors = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -59,7 +60,7 @@ export const Personal = () => {
         })
       );
     } else if (username === "") {
-      dispatch(setErrors({ username: "Некорректное имя" }));
+      dispatch(setErrors({ username: "Введите Имя" }));
     } else if (nickname === "") {
       dispatch(setErrors({ nickname: "Введите никнейм" }));
     } else if (surname === "") {
@@ -75,15 +76,14 @@ export const Personal = () => {
   };
   return (
     <div className={styles.personal}>
-      <div className={styles.header}>
-        <Wizard />
-      </div>
+      {/* <div className={styles.header}>
+      </div> */}
       <form onSubmit={handleClick} className={styles.form__block}>
         <InputForm
           type="text"
           label="Никнейм"
           value={nickname}
-          name="phone"
+          name="nickname"
           placeholder="Введите Никнейм"
           onChange={handleNickNameChange}
           error={errors.nickname}
@@ -107,16 +107,19 @@ export const Personal = () => {
           error={errors.surname}
         />
 
-        <DropDown
+        <Select
           onChange={handleGender}
           error={errors.gender}
           value={gender}
+          title="Выберите Пол"
         />
 
         <div className={styles.button__block}>
-          <ButtonForm type="submit" disabled={false}>
+          <Link to="/">
+          <ButtonForm type="button" disabled={false}>
             Назад
           </ButtonForm>
+          </Link>
           <ButtonForm type="submit" disabled={false}>
             Далее
           </ButtonForm>

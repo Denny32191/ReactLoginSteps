@@ -5,6 +5,7 @@ import { Login } from "./features/Login";
 import Personal from "./features/Personal/Personal";
 import Preference from "./features/Preference/Preference";
 import styles from "./App.module.scss";
+import Stepper from "./features/Stepper/Stepper";
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
       <div className={styles.container}>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/second" element={<Personal />} />
+          <Route path="/second" element={<Stepper />} />
           <Route path="/three" element={<Preference />} />
         </Routes>
       </div>

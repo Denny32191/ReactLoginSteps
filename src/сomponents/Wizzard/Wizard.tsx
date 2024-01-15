@@ -2,25 +2,12 @@ import styles from "./Wizard.module.scss";
 import React from "react";
 
 interface WizardStage {
-  type?: number;
-  // "text" | "number" | "email " | "password";
-  label?: string;
-  value?: string | number;
-  name?: string;
-  placeholder?: string;
-  error?: boolean;
-  disabled?: boolean;
-  // onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+
+  //  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Wizard: React.FC<WizardStage> = ({
-  type,
-  label,
-  value,
-  name,
-  placeholder,
-  error,
-  disabled,
+
 }) => {
   return (
     <label>

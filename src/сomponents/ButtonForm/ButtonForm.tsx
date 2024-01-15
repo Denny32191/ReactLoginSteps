@@ -2,7 +2,7 @@ import styles from './ButtonForm.module.scss'
 import React, { ChangeEvent } from "react"
 
 interface ButtonProps {
-  type?: "submit" 
+  type?: "submit" | "button"
   // | "reset" | "submit" | undefined
   disabled: boolean 
   children: React.ReactNode
