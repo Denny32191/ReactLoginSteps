@@ -1,1 +1,2 @@
-export { default as ButtonForm } from "./ButtonForm";
+import ButtonForm from "./ButtonForm";
+export default ButtonForm;

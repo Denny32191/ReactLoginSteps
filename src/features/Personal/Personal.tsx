@@ -10,8 +10,8 @@ import {
   setErrors,
 } from "./personalSlice";
 import React from "react";
-import InputForm from "../../сomponents/InputForm/InputForm";
-import ButtonForm from "./../../сomponents/ButtonForm/ButtonForm";
+import InputForm from "../../сomponents/InputForm/";
+import ButtonForm from "./../../сomponents/ButtonForm";
 
 import Select from "../../сomponents/Select/Select";
 
