@@ -79,7 +79,6 @@ export const Login = () => {
           placeholder="Введите номер телефона"
           onChange={handlePhoneChange}
           error={errors.phone}
-          
         />
 
         <InputForm

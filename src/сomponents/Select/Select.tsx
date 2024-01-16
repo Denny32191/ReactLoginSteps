@@ -49,7 +49,7 @@ title,
           {title}
         </option  >
         {genderOptions.map((options) => (
-          <option key={options.value} value={options.value}>{options.label}</option>
+          <option>{options.label}</option>
         ))}
         
       </select>

@@ -1,5 +1,4 @@
 import styles from "./Personal.module.scss";
-import Wizard from "../../сomponents/Wizzard/Wizard";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { RootState } from "../../app/store";
@@ -14,7 +13,7 @@ import React from "react";
 import InputForm from "../../сomponents/InputForm/InputForm";
 import ButtonForm from "./../../сomponents/ButtonForm/ButtonForm";
 
-import Select from "../../сomponents/DropDown/Select";
+import Select from "../../сomponents/Select/Select";
 
 export const Personal = () => {
   const dispatch = useDispatch();
@@ -45,7 +44,10 @@ export const Personal = () => {
       setErrors({ nickname: "", username: "", surname: "", gender: "" })
     );
   };
-
+  const genderOptions = [
+    { value: "male", label: "Мужской" },
+    { value: "female", label: "Женский" },
+  ];
   const navigate = useNavigate();
   const handleClick = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -112,13 +114,14 @@ export const Personal = () => {
           error={errors.gender}
           value={gender}
           title="Выберите Пол"
+          options={genderOptions}
         />
 
         <div className={styles.button__block}>
           <Link to="/">
-          <ButtonForm type="button" disabled={false}>
-            Назад
-          </ButtonForm>
+            <ButtonForm type="button" disabled={false}>
+              Назад
+            </ButtonForm>
           </Link>
           <ButtonForm type="submit" disabled={false}>
             Далее
