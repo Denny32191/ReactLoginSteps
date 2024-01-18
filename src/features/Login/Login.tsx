@@ -4,8 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { RootState } from "../../app/store";
 import { setPhone, setEmail, setErrors } from "./loginSlice";
 import React from "react";
-import InputForm from "../../сomponents/InputForm/InputForm";
-import ButtonForm from "../../сomponents/ButtonForm/ButtonForm";
+import {InputForm} from "./../../сomponents/InputForm";
+import { ButtonForm } from "./../../сomponents/ButtonForm";
 
 export const Login = () => {
   const dispatch = useDispatch();

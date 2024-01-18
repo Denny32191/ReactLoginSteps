@@ -1,6 +1,7 @@
 import React, { ChangeEvent } from "react";
 import styles from "./InputForm.module.scss";
 
+
 interface InputProps {
   type: "text" | "number" | "email" | "password";
   label: string ;
@@ -11,7 +12,7 @@ interface InputProps {
   disabled?: boolean;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
-const InputForm: React.FC<InputProps> = ({
+export const InputForm: React.FC<InputProps> = ({
   type,
   label,
   value,
@@ -39,4 +40,5 @@ const InputForm: React.FC<InputProps> = ({
   );
 };
 
-export default InputForm;
+
+export default InputForm

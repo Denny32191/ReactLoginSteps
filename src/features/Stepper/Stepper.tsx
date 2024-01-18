@@ -1,12 +1,12 @@
-import Wizard from "../../сomponents/Wizzard/Wizard";
+import Wizard from "../../сomponents/Wizard/Wizard";
 import { Personal } from "../Personal";
 
-function Stepper () {
-    return (
-        <div>
-         <Wizard/>
-         <Personal/>
-        </div>
-    )
+function Stepper() {
+  return (
+    <div>
+      <Wizard />
+      <Personal />
+    </div>
+  );
 }
 export default Stepper;

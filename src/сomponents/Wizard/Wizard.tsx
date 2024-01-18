@@ -1,12 +1,13 @@
 import styles from "./Wizard.module.scss";
-import React from "react";
+
+import React, { ChangeEvent } from "react";
 
 interface WizardStage {
 
   //  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Wizard: React.FC<WizardStage> = ({
+export const Wizard: React.FC<WizardStage> = ({
 
 }) => {
   return (

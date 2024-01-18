@@ -10,8 +10,8 @@ import {
   setErrors,
 } from "./personalSlice";
 import React from "react";
-import InputForm from "../../сomponents/InputForm/";
-import ButtonForm from "./../../сomponents/ButtonForm";
+import {InputForm} from "./../../сomponents/InputForm";
+import { ButtonForm } from "./../../сomponents/ButtonForm";
 
 import Select from "../../сomponents/Select/Select";
 
@@ -52,6 +52,7 @@ export const Personal = () => {
   const handleClick = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    
     if (nickname === "" && username === "" && surname === "" && gender === "") {
       dispatch(
         setErrors({

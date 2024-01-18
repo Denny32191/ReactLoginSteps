@@ -2,6 +2,9 @@ import styles from './ButtonForm.module.scss'
 import React, { ChangeEvent } from "react"
 
 
+
+
+
 interface ButtonProps {
   type?: "submit" | "button"
   // | "reset" | "submit" | undefined
@@ -10,7 +13,7 @@ interface ButtonProps {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const ButtonForm: React.FC<ButtonProps> = ({
+export const ButtonForm: React.FC<ButtonProps> = ({
   type,
   disabled,
   children,
