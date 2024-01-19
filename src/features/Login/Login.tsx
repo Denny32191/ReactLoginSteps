@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./Login.module.scss";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { RootState } from "../../app/store";
 import { setPhone, setEmail, setErrors } from "./loginSlice";
 import React from "react";
@@ -25,22 +25,26 @@ export const Login = () => {
   const handleErrors = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setErrors({ phone: "", email: "" }));
   };
+const isValid = 
+  phone !== "" &&
+  email !== ""
+
+
   const navigate = useNavigate();
   const handleClick = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    if (phone === "" && email === "") {
-      dispatch(
-        setErrors({ phone: "Введите номер телефона", email: "Введите email" })
-      );
-    } else if (phone === "") {
-      dispatch(setErrors({ phone: "Введите номер телефона" }));
-    } else if (email === "") {
-      dispatch(setErrors({ email: "Введите email" }));
-    } else {
-      dispatch(setErrors({ phone: "", email: "" }));
-      navigate("/second");
+    dispatch(
+      setErrors({
+        phone: !phone ? "Введите номер телефона" : "",
+        email:  !email  ? "Введите email" : ""
+   
+      })
+      
+    );
+    if (isValid) {
+      navigate("/stepper");
     }
+
   };
 
   return (

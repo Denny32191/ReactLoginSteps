@@ -11,8 +11,8 @@ function App() {
       <div className={styles.container}>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/second" element={<Stepper />} />
-          <Route path="/three" element={<Preference />} />
+          <Route path="/stepper" element={<Stepper />} />
+          <Route path="/preference" element={<Preference />} />
         </Routes>
       </div>
     </BrowserRouter>

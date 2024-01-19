@@ -22,7 +22,6 @@ export const InputForm: React.FC<InputProps> = ({
   disabled,
   onChange,
 }) => {
-  console.log(error)
   return (
       <label htmlFor={label}>
         <p className={styles.text}>{label}</p>

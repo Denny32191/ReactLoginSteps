@@ -23,7 +23,7 @@ const genderOptions = [
  ];
 
 
-const Select: React.FC<SelectProps> = ({
+ export const Select: React.FC<SelectProps> = ({
   error,
   options,
   value,

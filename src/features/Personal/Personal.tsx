@@ -41,42 +41,42 @@ export const Personal = () => {
   const errors = useSelector((state: RootState) => state.personal.errors);
   const handleErrors = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(
-      setErrors({ nickname: "", username: "", surname: "", gender: "" })
+      setErrors({ 
+        nickname: "", 
+        username: "", 
+        surname: "",
+        gender: "" })
     );
   };
   const genderOptions = [
     { value: "male", label: "Мужской" },
     { value: "female", label: "Женский" },
   ];
+  const isValid =
+  username !== "" &&
+  nickname !== "" &&
+  surname !== "" &&
+  gender !== "";
+
   const navigate = useNavigate();
   const handleClick = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+  
 
-    
-    if (nickname === "" && username === "" && surname === "" && gender === "") {
-      dispatch(
-        setErrors({
-          username: "Введите Имя",
-          nickname: "Введите никнейм",
-          surname: "Введите Фамилию",
-          gender: "Выберите пол",
-        })
-      );
-    } else if (username === "") {
-      dispatch(setErrors({ username: "Введите Имя" }));
-    } else if (nickname === "") {
-      dispatch(setErrors({ nickname: "Введите никнейм" }));
-    } else if (surname === "") {
-      dispatch(setErrors({ surname: "Введите Фамилию" }));
-    } else if (gender === "") {
-      dispatch(setErrors({ gender: "Выберите Пол" }));
-    } else {
-      dispatch(
-        setErrors({ username: "", nickname: "", surname: "", gender: "" })
-      );
-      navigate("/three");
-    }
-  };
+  dispatch(
+    setErrors({
+      username: !username  ? "Введите Имя" : "",
+      nickname: !nickname  ? "Введите никнейм" : "",
+      surname: !surname  ? "Введите Фамилию" : "",
+      gender: !gender ? "Выберите пол" : ""
+    })
+  );
+
+  if (isValid) {
+    navigate("/preference");
+  }
+
+};
   return (
     <div className={styles.personal}>
       {/* <div className={styles.header}>
