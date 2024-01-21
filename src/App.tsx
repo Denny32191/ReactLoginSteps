@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Login } from "./features/Login";
-import Preference from "./features/Preference/Preference";
+import { Preference } from "./features/Preference";
 import styles from "./App.module.scss";
 import Stepper from "./features/Stepper/Stepper";
 

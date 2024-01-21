@@ -6,16 +6,28 @@
   .text{
     margin-bottom: 10px;
   }
-  input {
-    width: 240px;
-    height: 30px;
-    border: 1px;
-    border-radius: 4px;
-    outline: none;
-    list-style-type:none;
-    background-color:whitesmoke;
-    padding-left: 10px;
-    margin-bottom: 20px;
+  // input {
+  //   width: 240px;
+  //   height: 30px;
+  //   border: 1px;
+  //   border-radius: 4px;
+  //   outline: none;
+  //   list-style-type:none;
+  //   background-color:whitesmoke;
+  //   padding-left: 10px;
+  //   margin-bottom: 20px;
+  // }
+
+  .inputs{
+       width: 240px;
+      height: 30px;
+      border: 1px;
+      border-radius: 4px;
+      outline: none;
+      list-style-type:none;
+       background-color:whitesmoke;
+      padding-left: 10px;
+      margin-bottom: 20px;
   }
   .error {
     margin-bottom: 10px;

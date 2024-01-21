@@ -33,4 +33,3 @@ export const ButtonForm: React.FC<ButtonProps> = ({
   );
 }
 
-export default ButtonForm;

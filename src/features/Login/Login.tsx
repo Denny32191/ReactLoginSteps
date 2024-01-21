@@ -26,8 +26,8 @@ export const Login = () => {
     dispatch(setErrors({ phone: "", email: "" }));
   };
 const isValid = 
-  phone !== "" &&
-  email !== ""
+  phone  &&
+  email 
 
 
   const navigate = useNavigate();

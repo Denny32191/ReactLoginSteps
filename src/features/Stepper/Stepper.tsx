@@ -1,4 +1,4 @@
-import Wizard from "../../сomponents/Wizard/Wizard";
+import {Wizard} from "../../сomponents/Wizard";
 import { Personal } from "../Personal";
 
 function Stepper() {

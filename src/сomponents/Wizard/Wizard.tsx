@@ -11,7 +11,6 @@ export const Wizard: React.FC<WizardStage> = ({
 
 }) => {
   return (
-    <label>
       <div className={styles.header}>
         <div className={styles.steps__loading}>
           <button className={styles.button__one}></button>
@@ -21,8 +20,7 @@ export const Wizard: React.FC<WizardStage> = ({
           <button className={styles.button__three}></button>
         </div>
       </div>
-    </label>
   );
 };
 
-export default Wizard;
+

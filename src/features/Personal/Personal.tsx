@@ -53,10 +53,10 @@ export const Personal = () => {
     { value: "female", label: "Женский" },
   ];
   const isValid =
-  username !== "" &&
-  nickname !== "" &&
-  surname !== "" &&
-  gender !== "";
+  username  &&
+  nickname  &&
+  surname  &&
+  gender 
 
   const navigate = useNavigate();
   const handleClick = (e: React.FormEvent<HTMLFormElement>) => {
@@ -133,4 +133,4 @@ export const Personal = () => {
   );
 };
 
-export default Personal;
+

@@ -1,8 +1,8 @@
 import React, { ChangeEvent } from "react";
-import styles from "./InputForm.module.scss";
 
 
-interface InputProps {
+
+interface CheckBoxFormProps {
   type: "text" | "number" | "email" | "password" | "checkbox" | "radio";
   label: string ;
   value: string ;
@@ -12,7 +12,7 @@ interface InputProps {
   disabled?: boolean;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
-export const InputForm: React.FC<InputProps> = ({
+export const CheckBoxForm: React.FC<CheckBoxFormProps> = ({
   type,
   label,
   value,
@@ -24,10 +24,9 @@ export const InputForm: React.FC<InputProps> = ({
 }) => {
   return (
       <label htmlFor={label}>
-        <p className={styles.text}>{label}</p>
+        {/* <p className={styles.text}>{label}</p> */}
        
         <input
-        className={styles.inputs}
           type={type}
           value={value}
           name={name}
@@ -35,10 +34,7 @@ export const InputForm: React.FC<InputProps> = ({
           disabled={disabled}
           onChange={onChange}
         />
-         {error && <p className={styles.error}>{error} </p>} 
+         {/* {error && <p className={styles.error}>{error} </p>}  */}
       </label>
   );
 };
-
-
-
