@@ -29,9 +29,7 @@ export const preferenceSlice = createSlice({
     setInputForms: (state,action: PayloadAction<string[]>) => {
       state.inputForms = action.payload;
     },
-    addInputForm: (state) => {
-      state.inputForms.push(''); 
-    },
+
     setCheckBox:(state,action:PayloadAction<string>)=> {
       state.checkbox = action.payload;
     },
@@ -40,5 +38,5 @@ export const preferenceSlice = createSlice({
     },
   },
 });
-export const { setInputAbout,setErrors,setInputForms,addInputForm,setCheckBox } = preferenceSlice.actions;
+export const { setInputAbout,setErrors,setInputForms,setCheckBox } = preferenceSlice.actions;
 export const preferenceReducer = preferenceSlice.reducer;
