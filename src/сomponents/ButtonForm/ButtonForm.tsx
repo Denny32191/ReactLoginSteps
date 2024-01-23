@@ -21,7 +21,7 @@ export const ButtonForm: React.FC<ButtonProps> = ({
 }) => {
   return (
     <div className={styles.buttons}>
-      <button 
+      <button className={styles.button__blue}
         type={type}
         disabled={disabled}
         onClick={onClick}

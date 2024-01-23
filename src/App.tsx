@@ -4,6 +4,7 @@ import { Login } from "./features/Login";
 import { Preference } from "./features/Preference";
 import styles from "./App.module.scss";
 import Stepper from "./features/Stepper/Stepper";
+import { Description } from "./features/Description/Description";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/stepper" element={<Stepper />} />
           <Route path="/preference" element={<Preference />} />
+          <Route path="/description" element={<Description/>}/>
         </Routes>
       </div>
     </BrowserRouter>

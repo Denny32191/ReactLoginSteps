@@ -1,9 +1,10 @@
 import React, { ChangeEvent } from "react";
+import styles from './CheckBoxForm.module.scss'
 
 
 
 interface CheckBoxFormProps {
-  type: "text" | "number" | "email" | "password" | "checkbox" | "radio";
+  type: "checkbox" | "radio";
   label: string ;
   value: string ;
   name: string;
@@ -23,10 +24,10 @@ export const CheckBoxForm: React.FC<CheckBoxFormProps> = ({
   onChange,
 }) => {
   return (
-      <label htmlFor={label}>
-        {/* <p className={styles.text}>{label}</p> */}
+      <label htmlFor={label}  className={styles.radio__group}>
        
-        <input
+        <input 
+        className={styles.radio__input}
           type={type}
           value={value}
           name={name}
@@ -34,7 +35,8 @@ export const CheckBoxForm: React.FC<CheckBoxFormProps> = ({
           disabled={disabled}
           onChange={onChange}
         />
-         {/* {error && <p className={styles.error}>{error} </p>}  */}
+        <p className={styles.text}>{label}</p>
+          {error && <p className={styles.error}>{error} </p>}  
       </label>
   );
 };
