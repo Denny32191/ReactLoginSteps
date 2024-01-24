@@ -14,11 +14,11 @@ export const Preference = () => {
   const state = useSelector((state: RootState) => state);
   console.log(state);
 
-  // const inputAbout = useSelector(
-  //   (state: RootState) => state.preference.inputAbout);
-  // const handleInputAbout = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   dispatch(setInputAbout(e.target.value));
-  // };
+  const inputAbout = useSelector(
+    (state: RootState) => state.preference.inputAbout);
+  const handleInputAbout = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(setInputAbout(e.target.value));
+  };
 
   
 
@@ -27,9 +27,10 @@ export const Preference = () => {
     dispatch(setCheckBox(e.target.value));
   };
   const inputAddForms = useSelector((state: RootState) => state.preference.inputForms);
-  const handleAddInputForms = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(setInputForms([e.target.value]))
-  }
+  const handleAddInputForms = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const input = e.target as HTMLInputElement;
+    dispatch(setInputForms([{ label: input.value }]));
+  };
 
   const navigate = useNavigate();
   const handleClick = (e: React.FormEvent<HTMLFormElement>) => {
@@ -43,21 +44,19 @@ export const Preference = () => {
      
       <form onSubmit={handleClick}>
            {inputAddForms.map((inputAddForm, index) => (
-        
-      
         <InputForm
         key={index}
           type="text"
           label=""
-          value={inputAddForm}
+          value={inputAddForm.label}
           name="текст"
           placeholder="Введите Ваши Преимущества"
-          onChange={handleAddInputForms}
+          onChange={handleInputAbout}
         />
         ))}
         <button type="button">delete </button>
-    
-        <ButtonForm type="button" disabled={false} >
+        
+        <ButtonForm type="button" disabled={false} onClick={handleAddInputForms}>
           +
         </ButtonForm>
         <div className={styles.preference__checkbox}>

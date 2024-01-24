@@ -3,11 +3,11 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type PreferenceState = {
   inputAbout: string;
-  inputForms: string[];
+  inputForms:  {label: string}[];
   checkbox: string;
   errors: {
     inputAbout?: string;
-    inputForms?: string[];
+    inputForms?:  {label: string}[];
     checkbox?: string;
   };
 };
@@ -26,14 +26,14 @@ export const preferenceSlice = createSlice({
     setInputAbout: (state, action: PayloadAction<string>) => {
       state.inputAbout = action.payload;
     },
-    setInputForms: (state,action: PayloadAction<string[]>) => {
-      state.inputForms = action.payload;
+    setInputForms: (state,action: PayloadAction< {label: string}[]>) => {
+      state.inputForms.push(...action.payload);
     },
 
     setCheckBox:(state,action:PayloadAction<string>)=> {
       state.checkbox = action.payload;
     },
-    setErrors: (state, action: PayloadAction<{ inputAbout?: string, inputAdd?: string[],checkbox?: string, }>) => {
+    setErrors: (state, action: PayloadAction<{ inputAbout?: string,  inputForms?:  {label: string}[],checkbox?: string, }>) => {
       state.errors = action.payload;
     },
   },
