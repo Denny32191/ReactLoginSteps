@@ -10,6 +10,7 @@ interface InputProps {
   placeholder: string;
   error?: string ;
   disabled?: boolean;
+  id?: number;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 export const InputForm: React.FC<InputProps> = ({
@@ -20,6 +21,7 @@ export const InputForm: React.FC<InputProps> = ({
   placeholder,
   error,
   disabled,
+  id,
   onChange,
 }) => {
   return (
