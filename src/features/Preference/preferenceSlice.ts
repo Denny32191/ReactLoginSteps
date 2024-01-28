@@ -50,7 +50,7 @@ export const preferenceSlice = createSlice({
      error:string,
      id:number,
      disabled:string}[]>) => {
-      state.inputForms = ({...action.payload});
+      state.inputForms = ([...action.payload]);
     },
 
     setCheckBox:(state,action:PayloadAction<string>)=> {

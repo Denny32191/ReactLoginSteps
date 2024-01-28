@@ -29,8 +29,12 @@ export const Preference = () => {
   const inputAddForms = useSelector((state: RootState) => state.preference.inputForms);
   const handleAddInputForms = (e: React.MouseEvent<HTMLButtonElement>) => {
     const input = e.target as HTMLInputElement;
-    dispatch(setInputForms([{label: input.value, type: "", value: "", name: "", placeholder: "", error: "", id: 0, disabled: ""}]));
+    const id = parseInt(Math.random().toString(36), 10);
+    dispatch(setInputForms([{label: input.value, type: "", value: "", name: "", placeholder: "", error: "", id: id , disabled: ""}]));
   };
+
+ 
+
 
   const navigate = useNavigate();
   const handleClick = (e: React.FormEvent<HTMLFormElement>) => {
@@ -48,7 +52,7 @@ export const Preference = () => {
         
         id={id}
           type="text"
-          label="вве"
+          label=""
           value={inputAddForm.label}
           name="текст"
           placeholder="Введите Ваши Преимущества"
