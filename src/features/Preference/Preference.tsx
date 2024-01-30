@@ -20,17 +20,16 @@ export const Preference = () => {
     dispatch(setInputAbout(e.target.value));
   };
 
-  
 
   const inputCheckBox = useSelector((state: RootState) => state.preference.checkbox);
   const handleInputCheckBox = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setCheckBox(e.target.value));
   };
-  const inputAddForms = useSelector((state: RootState) => state.preference.inputForms);
-  const handleAddInputForms = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const inputForms = useSelector((state: RootState) => state.preference.inputForms);
+  const handleInputForms = (e: React.MouseEvent<HTMLButtonElement>) => {
     const input = e.target as HTMLInputElement;
     const id = parseInt(Math.random().toString(36), 10);
-    dispatch(setInputForms([{label: input.value, type: "", value: "", name: "", placeholder: "", error: "", id: id , disabled: ""}]));
+    dispatch(setInputForms([{label: input, type: "", value: "", name: "", placeholder: "", error: "", id: id , disabled: ""}]));
   };
 
  
@@ -47,21 +46,21 @@ export const Preference = () => {
       <h3 className={styles.preference__title}>Преимущества</h3>
      
       <form onSubmit={handleClick}>
-           {inputAddForms.map((inputAddForm, id) => (
+           {inputForms.map((inputForm) => (
         <InputForm
         
-        id={id}
+        id={inputForm.id}
           type="text"
-          label=""
-          value={inputAddForm.label}
-          name="текст"
-          placeholder="Введите Ваши Преимущества"
+          label={inputForm.label}
+          value={inputForm.value}
+          name={inputForm.name}
+          placeholder={inputForm.placeholder}
           onChange={handleInputAbout}
         />
         ))}
         <button type="button">delete </button>
         
-        <ButtonForm type="button" disabled={false} onClick={handleAddInputForms}>
+        <ButtonForm type="button" disabled={false} onClick={handleInputForms}>
           +
         </ButtonForm>
         <div className={styles.preference__checkbox}>
