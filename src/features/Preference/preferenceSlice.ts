@@ -1,10 +1,7 @@
-
 import { Preference } from "./Preference";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { InputForm } from "../../сomponents/InputForm";
 
-
-export type InputForm = {
+export type InputFormType = {
   label: string;
   type: string;
   value: string;
@@ -13,22 +10,32 @@ export type InputForm = {
   error: string;
   id: number;
   disabled: string;
+ 
 };
 
 export type PreferenceState = {
   inputAbout: string;
-  inputForms:  [];
+  inputForms: InputFormType[];
   checkbox: string;
   errors: {
     inputAbout?: string;
-    inputForms?:  [];
+    inputForms?: [];
     checkbox?: string;
   };
 };
 
 const initialState: PreferenceState = {
   inputAbout: "",
-  inputForms: [],
+  inputForms: [{
+    label: "",
+    type: "",
+    value: "",
+    name: "",
+    placeholder: "",
+    error: "",
+    id: 0,
+    disabled: "",
+  },],
   checkbox: "",
   errors: {},
 };
@@ -37,20 +44,37 @@ export const preferenceSlice = createSlice({
   initialState,
 
   reducers: {
-    setInputAbout: (state, action: PayloadAction<{id:string, value:string}>) => {
-      state.inputAbout = action.payload.value;;
+    setInputAbout: (
+      state,
+      action: PayloadAction<{ id: number; value: string }>
+    ) => {
+      const { id } = action.payload
+      const index = state.inputForms.findIndex((inputForm) => inputForm.id === id);
+      if (index !== -1) {
+        state.inputForms[index].value = action.payload.value;
+      }
+  
+      
     },
-    setInputForms: (state, action: PayloadAction<InputForm[]>) => {
+    setInputForms: (state, action: PayloadAction<InputFormType[]>) => {
       state.inputForms = [...state.inputForms, ...action.payload];
     },
 
-    setCheckBox:(state,action:PayloadAction<string>)=> {
+    setCheckBox: (state, action: PayloadAction<string>) => {
       state.checkbox = action.payload;
     },
-    setErrors: (state, action: PayloadAction<{ inputAbout?: string,  inputForms?:  InputForm[],checkbox?: string, }>) => {
+    setErrors: (
+      state,
+      action: PayloadAction<{
+        inputAbout?: string;
+        // inputForms?: InputFormType[];
+        checkbox?: string;
+      }>
+    ) => {
       state.errors = action.payload;
     },
   },
 });
-export const { setInputAbout,setErrors,setInputForms,setCheckBox } = preferenceSlice.actions;
+export const { setInputAbout, setErrors, setInputForms, setCheckBox } =
+  preferenceSlice.actions;
 export const preferenceReducer = preferenceSlice.reducer;

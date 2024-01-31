@@ -15,25 +15,42 @@ export const Preference = () => {
   console.log(state);
 
   const inputAbout = useSelector(
-    (state: RootState) => state.preference.inputAbout);
-  const handleInputAbout = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(setInputAbout(e.target.value));
-  };
+    (state: RootState) => state.preference.inputAbout
+  );
+  const handleInputAbout =
+    (id: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
+      dispatch(setInputAbout({ id, value: e.target.value }));
+    };
 
-
-  const inputCheckBox = useSelector((state: RootState) => state.preference.checkbox);
+  const inputCheckBox = useSelector(
+    (state: RootState) => state.preference.checkbox
+  );
   const handleInputCheckBox = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setCheckBox(e.target.value));
   };
-  const inputForms = useSelector((state: RootState) => state.preference.inputForms);
-  const handleInputForms = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const input = e.target as HTMLInputElement;
+  const inputForms = useSelector(
+    (state: RootState) => state.preference.inputForms
+  );
+  const handleInputFormsClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    // const input = e.target as HTMLInputElement;
     const id = parseInt(Math.random().toString(36), 10);
-    dispatch(setInputForms([{label: input, type: "", value: "", name: "", placeholder: "", error: "", id: id , disabled: ""}]));
+    dispatch(
+      setInputForms([
+        {
+          label: "",
+          type: "",
+          value: "",
+          name: "",
+          placeholder: "",
+          error: "",
+          id: id,
+          disabled: "",
+        },
+      ])
+    );
   };
 
- 
-
+  const handleInputChange = handleInputAbout;
 
   const navigate = useNavigate();
   const handleClick = (e: React.FormEvent<HTMLFormElement>) => {
@@ -44,23 +61,30 @@ export const Preference = () => {
     <div className={styles.preference}>
       <Wizard />
       <h3 className={styles.preference__title}>Преимущества</h3>
-     
+
       <form onSubmit={handleClick}>
-           {inputForms.map((inputForm) => (
-        <InputForm
-        
-        id={inputForm.id}
-          type="text"
-          label={inputForm.label}
-          value={inputForm.value}
-          name={inputForm.name}
-          placeholder={inputForm.placeholder}
-          onChange={handleInputAbout}
-        />
-        ))}
+        {inputForms.map((inputForm) => {
+          const handleInputChange = handleInputAbout(inputForm.id);
+
+        return (
+            <InputForm
+              id={inputForm.id}
+              type="text"
+              label={inputForm.label}
+              value={inputForm.value}
+              name={inputForm.name}
+              placeholder={inputForm.placeholder}
+              onChange={handleInputChange}
+            />
+            );
+        })}
         <button type="button">delete </button>
-        
-        <ButtonForm type="button" disabled={false} onClick={handleInputForms}>
+
+        <ButtonForm
+          type="button"
+          disabled={false}
+          onClick={handleInputFormsClick}
+        >
           +
         </ButtonForm>
         <div className={styles.preference__checkbox}>
