@@ -1,3 +1,5 @@
+
+import { InputForm } from "../../сomponents/InputForm";
 import { Preference } from "./Preference";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
@@ -17,6 +19,7 @@ export type PreferenceState = {
   inputAbout: string;
   inputForms: InputFormType[];
   checkbox: string;
+  createInput: string;
   errors: {
     inputAbout?: string;
     inputForms?: [];
@@ -26,6 +29,7 @@ export type PreferenceState = {
 
 const initialState: PreferenceState = {
   inputAbout: "",
+  createInput: "",
   inputForms: [{
     label: "",
     type: "",
@@ -44,18 +48,26 @@ export const preferenceSlice = createSlice({
   initialState,
 
   reducers: {
-    setInputAbout: (
-      state,
-      action: PayloadAction<{ id: number; value: string }>
-    ) => {
-      const { id } = action.payload
-      const index = state.inputForms.findIndex((inputForm) => inputForm.id === id);
-      if (index !== -1) {
-        state.inputForms[index].value = action.payload.value;
-      }
+    setInputAbout: (state, action: PayloadAction<{ id: number; value: string }>) => {
+      const { id, value } = action.payload;
+      state.inputForms = state.inputForms.map((inputForm) => {
+        if (inputForm.id === id) {
+          return { ...inputForm, value };
+        }
+        return inputForm;
+      });
+    
+      
+  
+   
+  
   
       
     },
+    setCreateInput:(state, action: PayloadAction<string>) => {
+      state.createInput = action.payload
+    },
+  
     setInputForms: (state, action: PayloadAction<InputFormType[]>) => {
       state.inputForms = [...state.inputForms, ...action.payload];
     },
@@ -75,6 +87,6 @@ export const preferenceSlice = createSlice({
     },
   },
 });
-export const { setInputAbout, setErrors, setInputForms, setCheckBox } =
+export const { setInputAbout, setErrors, setInputForms, setCheckBox,setCreateInput } =
   preferenceSlice.actions;
 export const preferenceReducer = preferenceSlice.reducer;

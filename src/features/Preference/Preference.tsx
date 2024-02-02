@@ -32,10 +32,11 @@ export const Preference = () => {
     (state: RootState) => state.preference.inputForms
   );
   const handleInputFormsClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    // const input = e.target as HTMLInputElement;
-    const id = parseInt(Math.random().toString(36), 10);
+    // const nextId = inputForms.length > 0 ? inputForms[inputForms.length - 1].id + 1 : 0;
+    const id = Date.now();
     dispatch(
       setInputForms([
+        // ...inputForms,
         {
           label: "",
           type: "",
@@ -46,11 +47,12 @@ export const Preference = () => {
           id: id,
           disabled: "",
         },
+        
       ])
     );
   };
 
-  const handleInputChange = handleInputAbout;
+
 
   const navigate = useNavigate();
   const handleClick = (e: React.FormEvent<HTMLFormElement>) => {
