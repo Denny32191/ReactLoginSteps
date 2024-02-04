@@ -4,10 +4,10 @@ import styles from "./InputForm.module.scss";
 
 interface InputProps {
   type: "text" | "number" | "email" | "password" | "checkbox" | "radio";
-  label: string ;
-  value: string ;
-  name: string;
-  placeholder: string;
+  label?: string ;
+  value?: string ;
+  name?: string;
+  placeholder?: string;
   error?: string ;
   disabled?: boolean;
   id?: number;

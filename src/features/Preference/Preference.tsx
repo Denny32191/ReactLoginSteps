@@ -2,11 +2,19 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./Preference.module.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { InputForm } from "../../сomponents/InputForm";
-import { setInputAbout, setInputForms, setCheckBox } from "./preferenceSlice";
+
+import {
+  setInputAbout,
+  setInputForms,
+  setCheckBox,
+  createInput,
+  deleteInput,
+} from "./preferenceSlice";
 import { RootState } from "../../app/store";
 import { ButtonForm } from "../../сomponents/ButtonForm";
 import { CheckBoxForm } from "../../сomponents/Checkbox";
 import { Wizard } from "../../сomponents/Wizard";
+import React from "react";
 
 export const Preference = () => {
   const dispatch = useDispatch();
@@ -17,8 +25,7 @@ export const Preference = () => {
   const inputAbout = useSelector(
     (state: RootState) => state.preference.inputAbout
   );
-  const handleInputAbout =
-    (id: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputAbout = (id: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
       dispatch(setInputAbout({ id, value: e.target.value }));
     };
 
@@ -31,28 +38,34 @@ export const Preference = () => {
   const inputForms = useSelector(
     (state: RootState) => state.preference.inputForms
   );
-  const handleInputFormsClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    // const nextId = inputForms.length > 0 ? inputForms[inputForms.length - 1].id + 1 : 0;
-    const id = Date.now();
-    dispatch(
-      setInputForms([
-        // ...inputForms,
-        {
-          label: "",
-          type: "",
-          value: "",
-          name: "",
-          placeholder: "",
-          error: "",
-          id: id,
-          disabled: "",
-        },
-        
-      ])
-    );
+  // const handleInputFormsClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  //   const id = Date.now();
+  //   dispatch(
+  //     setInputForms([
+  //       // ...inputForms,
+  //       {
+  //         label: "",
+  //         type: "",
+  //         value: "",
+  //         name: "",
+  //         placeholder: "",
+  //         error: "",
+  //         id: id,
+  //         disabled: "",
+  //       },
+
+  //     ])
+  //   );
+  // };
+
+
+  const handleDeleteInput = (id: number) =>  (e: React.MouseEvent<HTMLButtonElement>) => {
+    dispatch(deleteInput(id));
   };
 
-
+  const handleCreateInputForm = (e: React.MouseEvent<HTMLButtonElement>) => {
+    dispatch(createInput());
+  };
 
   const navigate = useNavigate();
   const handleClick = (e: React.FormEvent<HTMLFormElement>) => {
@@ -67,8 +80,10 @@ export const Preference = () => {
       <form onSubmit={handleClick}>
         {inputForms.map((inputForm) => {
           const handleInputChange = handleInputAbout(inputForm.id);
+          const handleDeleteInputForm = handleDeleteInput(inputForm.id);
 
-        return (
+          return (
+            <div>
             <InputForm
               id={inputForm.id}
               type="text"
@@ -78,14 +93,18 @@ export const Preference = () => {
               placeholder={inputForm.placeholder}
               onChange={handleInputChange}
             />
-            );
+            
+            <button className={styles.preference__button}  type="button" onClick={handleDeleteInputForm}>
+              <img className={styles.preference__images}   src="./../../images/Delete.png" alt="" /> </button>
+            </div>
+          );
         })}
-        <button type="button">delete </button>
+        
 
         <ButtonForm
           type="button"
           disabled={false}
-          onClick={handleInputFormsClick}
+          onClick={handleCreateInputForm}
         >
           +
         </ButtonForm>
