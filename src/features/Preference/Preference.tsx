@@ -94,8 +94,7 @@ export const Preference = () => {
               onChange={handleInputChange}
             />
             
-            <button className={styles.preference__button}  type="button" onClick={handleDeleteInputForm}>
-              <img className={styles.preference__images}   src="./../../images/Delete.png" alt="" /> </button>
+            <button className={styles.preference__button}  type="button" onClick={handleDeleteInputForm}> +</button>
             </div>
           );
         })}

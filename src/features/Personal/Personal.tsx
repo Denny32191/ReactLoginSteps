@@ -10,7 +10,7 @@ import {
   setErrors,
 } from "./personalSlice";
 import React from "react";
-import {InputForm} from "./../../сomponents/InputForm";
+import { InputForm } from "./../../сomponents/InputForm";
 import { ButtonForm } from "./../../сomponents/ButtonForm";
 
 import Select from "../../сomponents/Select/Select";
@@ -41,46 +41,39 @@ export const Personal = () => {
   const errors = useSelector((state: RootState) => state.personal.errors);
   const handleErrors = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(
-      setErrors({ 
-        nickname: "", 
-        username: "", 
+      setErrors({
+        nickname: "",
+        username: "",
         surname: "",
-        gender: "" })
+        gender: "",
+      })
     );
   };
   const genderOptions = [
     { value: "male", label: "Мужской" },
     { value: "female", label: "Женский" },
   ];
-  const isValid =
-  username  &&
-  nickname  &&
-  surname  &&
-  gender 
+  const isValid = username && nickname && surname && gender;
 
   const navigate = useNavigate();
   const handleClick = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-  
 
-  dispatch(
-    setErrors({
-      username: !username  ? "Введите Имя" : "",
-      nickname: !nickname  ? "Введите никнейм" : "",
-      surname: !surname  ? "Введите Фамилию" : "",
-      gender: !gender ? "Выберите пол" : ""
-    })
-  );
+    dispatch(
+      setErrors({
+        username: !username ? "Введите Имя" : "",
+        nickname: !nickname ? "Введите никнейм" : "",
+        surname: !surname ? "Введите Фамилию" : "",
+        gender: !gender ? "Выберите пол" : "",
+      })
+    );
 
-  if (isValid) {
-    navigate("/preference");
-  }
-
-};
+    if (isValid) {
+      navigate("/preference");
+    }
+  };
   return (
     <div className={styles.personal}>
-      {/* <div className={styles.header}>
-      </div> */}
       <form onSubmit={handleClick} className={styles.form__block}>
         <InputForm
           type="text"
@@ -132,5 +125,3 @@ export const Personal = () => {
     </div>
   );
 };
-
-

@@ -18,9 +18,9 @@ export type PreferenceState = {
   inputForms: InputFormType[];
   checkbox: string;
   deleteInput: {
-    id:number;
-    value:string;
-  }
+    id: number;
+    value: string;
+  };
   createInput: {
     id: number;
     value: string;
@@ -40,7 +40,7 @@ const initialState: PreferenceState = {
   },
   deleteInput: {
     id: 0,
-    value: '',
+    value: "",
   },
   inputForms: [
     {
@@ -75,17 +75,25 @@ export const preferenceSlice = createSlice({
       });
     },
     createInput: (state) => {
-      state.inputForms = [...state.inputForms, { id: Date.now(),label: "",
-      type: "",
-      value: "",
-      name: "",
-      placeholder: "",
-      error: "",
-      disabled: "", }];
+      state.inputForms = [
+        ...state.inputForms,
+        {
+          id: Date.now(),
+          label: "",
+          type: "",
+          value: "",
+          name: "",
+          placeholder: "",
+          error: "",
+          disabled: "",
+        },
+      ];
     },
 
-    deleteInput: (state,action: PayloadAction<number>) => {
-      state.inputForms = state.inputForms.filter(inputForm => inputForm.id !== action.payload)
+    deleteInput: (state, action: PayloadAction<number>) => {
+      state.inputForms = state.inputForms.filter(
+        (inputForm) => inputForm.id !== action.payload
+      );
     },
 
     setInputForms: (state, action: PayloadAction<InputFormType[]>) => {
