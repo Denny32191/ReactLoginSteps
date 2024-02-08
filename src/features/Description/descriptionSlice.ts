@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type DescriptionState = {
   selfInput: string;
+  success: boolean;
   errors: {
     selfInput?: string
   }
@@ -9,6 +10,7 @@ export type DescriptionState = {
 }
 const initialState: DescriptionState = {
   selfInput: "",
+  success: false,
   errors: {},
   };
   export const descriptionSlice = createSlice({
@@ -18,11 +20,14 @@ const initialState: DescriptionState = {
    setSelfInput:(state, action: PayloadAction<string>) => {
     state.selfInput = action.payload;
       },
+      setSuccess(state,action) {
+        state.success = action.payload;
+      },
       setErrors: (state, action: PayloadAction<{selfInput?: string,}>) => {
         state.errors = action.payload;
       },
       
     }
     });
-    export const { setSelfInput,setErrors } = descriptionSlice.actions;
+    export const { setSelfInput,setErrors,setSuccess } = descriptionSlice.actions;
     export const descriptionReducer = descriptionSlice.reducer;

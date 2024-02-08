@@ -1,74 +1,81 @@
 import { useDispatch, useSelector } from "react-redux";
-import {  Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RootState } from "../../app/store";
-import {setSelfInput,setErrors} from './descriptionSlice'
+import { setSelfInput, setErrors, setSuccess } from "./descriptionSlice";
 import styles from "./Description.module.scss";
 import React from "react";
-import {AInputTextArea} from "./../../сomponents/InputTextArea";
+import { AInputTextArea } from "./../../сomponents/InputTextArea";
 import { ButtonForm } from "../../сomponents/ButtonForm";
-
+import { Modal } from "./../../сomponents/Modal";
 
 export const Description = () => {
   const dispatch = useDispatch();
 
   const state = useSelector((state: RootState) => state);
   console.log(state);
- 
-  const selfInput = useSelector((state:RootState) => state.description.selfInput);
+
+  const selfInput = useSelector(
+    (state: RootState) => state.description.selfInput
+  );
   const handleSelfInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setSelfInput(e.target.value));
   };
+
+const handleSucces = ((state:RootState) => state.description.success)
+
+
+
+
   const errors = useSelector((state: RootState) => state.description.errors);
   const handleErrors = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(
       setErrors({
-        selfInput: '',
+        selfInput: "",
       })
     );
   };
-  const isValid = selfInput   
-
+  const isValid = selfInput;
 
   const navigate = useNavigate();
   const handleClick = (e: React.FormEvent<HTMLFormElement>) => {
-     e.preventDefault();
+    e.preventDefault();
     dispatch(
       setErrors({
         selfInput: !selfInput ? "Укажите что нибудь о себе)" : "",
-       
       })
-      
     );
     if (isValid) {
       navigate("/Personal");
     }
-
   };
 
-  
   return (
     <div className={styles.description}>
-        <form action="" onSubmit={handleClick}>
+      <form action="" onSubmit={handleClick}>
         <p>О Себе</p>
-      <AInputTextArea
-      type="text"
-      onChange={handleSelfInputChange}
-      value={selfInput}
-      name="Abou"
-      placeholder="Введите данные "
-      error={errors.selfInput}
-      />
-      <div className={styles.button__block}>
-          <Link to="/"> 
+        <AInputTextArea
+          type="text"
+          onChange={handleSelfInputChange}
+          value={selfInput}
+          name="Abou"
+          placeholder="Введите данные "
+          error={errors.selfInput}
+        />
+        <div className={styles.button__block}>
+          <Link to="/">
             <ButtonForm type="button" disabled={false}>
               Назад
             </ButtonForm>
-            </Link>
+          </Link>
           <ButtonForm type="submit" disabled={false}>
             Далее
           </ButtonForm>
         </div>
-        </form>
+      </form>
+      <Modal
+        isOpen={true}
+
+      />
     </div>
   );
 };

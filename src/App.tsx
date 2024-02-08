@@ -5,6 +5,7 @@ import { Preference } from "./features/Preference";
 import styles from "./App.module.scss";
 import Stepper from "./features/Stepper/Stepper";
 import { Description } from "./features/Description/Description";
+import { Modal} from './сomponents/Modal'
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
           <Route path="/description" element={<Description/>}/>
         </Routes>
       </div>
+       <Modal
+        isOpen={false}
+        />  
     </BrowserRouter>
   );
 }
