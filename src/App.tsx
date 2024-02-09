@@ -8,6 +8,7 @@ import { Description } from "./features/Description/Description";
 import { Modal} from './сomponents/Modal'
 
 function App() {
+  
   return (
     <BrowserRouter>
       <div className={styles.container}>
@@ -18,9 +19,11 @@ function App() {
           <Route path="/description" element={<Description/>}/>
         </Routes>
       </div>
-       <Modal
+       {/* <Modal 
+       title="Форма Отправленна "
         isOpen={false}
-        />  
+        
+        />   */}
     </BrowserRouter>
   );
 }

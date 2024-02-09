@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { RootState } from "../../app/store";
-import { setSelfInput, setErrors, setSuccess } from "./descriptionSlice";
+import { setSelfInput, setErrors,  } from "./descriptionSlice";
 import styles from "./Description.module.scss";
 import React from "react";
 import { AInputTextArea } from "./../../сomponents/InputTextArea";
@@ -21,7 +21,9 @@ export const Description = () => {
     dispatch(setSelfInput(e.target.value));
   };
 
-const handleSucces = ((state:RootState) => state.description.success)
+  // const handleNextButtonClick = () => {
+  //   dispatch(success());
+  // };
 
 
 
@@ -72,10 +74,7 @@ const handleSucces = ((state:RootState) => state.description.success)
           </ButtonForm>
         </div>
       </form>
-      <Modal
-        isOpen={true}
-
-      />
+      
     </div>
   );
 };
