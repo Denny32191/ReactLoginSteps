@@ -1,18 +1,18 @@
-
-
-
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import { LoginState, loginReducer } from "../features/Login/loginSlice";
 import {
   PersonalState,
   personalReducer,
 } from "../features/Personal/personalSlice";
-import { PreferenceState , preferenceReducer } from '../features/Preference/preferenceSlice';
-import { DescriptionState,descriptionReducer} from '../features/Description/descriptionSlice';
-import { ModalState, modalReducer } from './../сomponents/Modal/modalSlice'
-
-
-
+import {
+  PreferenceState,
+  preferenceReducer,
+} from "../features/Preference/preferenceSlice";
+import {
+  DescriptionState,
+  descriptionReducer,
+} from "../features/Description/descriptionSlice";
+import { ModalState, modalReducer } from "../features/Modal/modalSlice";
 
 export const store = configureStore({
   reducer: {
@@ -21,7 +21,6 @@ export const store = configureStore({
     preference: preferenceReducer,
     description: descriptionReducer,
     modal: modalReducer,
-
   },
 });
 
@@ -32,7 +31,6 @@ export type RootState = {
   preference: PreferenceState;
   description: DescriptionState;
   modal: ModalState;
-
 };
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,

@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { RootState } from "../../app/store";
-import { setSelfInput, setErrors,  } from "./descriptionSlice";
+import { setSelfInput, setErrors } from "./descriptionSlice";
 import styles from "./Description.module.scss";
 import React from "react";
 import { AInputTextArea } from "./../../сomponents/InputTextArea";
 import { ButtonForm } from "../../сomponents/ButtonForm";
-import { Modal } from "./../../сomponents/Modal";
+import { Modal } from "../Modal";
 
 export const Description = () => {
   const dispatch = useDispatch();
@@ -24,9 +24,6 @@ export const Description = () => {
   // const handleNextButtonClick = () => {
   //   dispatch(success());
   // };
-
-
-
 
   const errors = useSelector((state: RootState) => state.description.errors);
   const handleErrors = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -74,7 +71,6 @@ export const Description = () => {
           </ButtonForm>
         </div>
       </form>
-      
     </div>
   );
 };
