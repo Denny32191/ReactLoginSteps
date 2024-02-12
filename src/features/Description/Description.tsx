@@ -7,8 +7,13 @@ import React from "react";
 import { AInputTextArea } from "./../../сomponents/InputTextArea";
 import { ButtonForm } from "../../сomponents/ButtonForm";
 import { Modal } from "../Modal";
+import { setIsOpen } from "../Modal/modalSlice";
 
 export const Description = () => {
+  const isOpen = useSelector((state:RootState) => state.modal.isOpen)
+  const handleIsOpen = (e: React.ChangeEvent<MouseEvent>) => {
+    dispatch(setIsOpen(false))
+  }
   const dispatch = useDispatch();
 
   const state = useSelector((state: RootState) => state);
@@ -44,6 +49,7 @@ export const Description = () => {
       })
     );
     if (isValid) {
+      dispatch(setIsOpen(true));
       navigate("/Personal");
     }
   };
@@ -66,11 +72,13 @@ export const Description = () => {
               Назад
             </ButtonForm>
           </Link>
-          <ButtonForm type="submit" disabled={false}>
+          <ButtonForm type="submit" disabled={false} >
             Далее
           </ButtonForm>
+          
         </div>
       </form>
+
     </div>
   );
 };

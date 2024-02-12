@@ -2,64 +2,48 @@ import { ChangeEvent } from "react";
 import styles from "./Modal.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { ButtonForm } from "../../сomponents/ButtonForm";
-import { setIsOpen } from "./modalSlice";
+import { ModalState, setIsOpen, setStatus } from "./modalSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { RootState } from "../../app/store";
 import { createPortal } from "react-dom";
+import { ModalSuccess } from "./../../сomponents/ModalSucces";
+import { ModalError } from "../../сomponents/ModalErrors";
 
-
-  interface ModalProps {
-  
-    isOpenModal?: boolean;
-    title?: string;
-    statusModal?:boolean
-    success?: boolean;
-    onClick?: (e: React.MouseEvent) => void;
-  }
-  
-  
-  
-  export const Modal: React.FC<ModalProps> = ({
-    isOpenModal,
-    statusModal,
-    title,
-    success,
-    onClick,
-  }) => {
- 
-    const status = useSelector((state: RootState) => state.modal.status);
-    const isOpen = useSelector((state: RootState) => state.modal.isOpen);
- 
-
-    const modalRoot = document.getElementById("modal-root");
-    const state = useSelector((state: RootState) => state);
+export const Modal = () => {
+  const dispatch = useDispatch();
+  const state = useSelector((state: RootState) => state);
   console.log(state);
-  
-  return (
-    <aside className={styles.modal}>
-      {status === "succes" && (
-      <div className={styles.modal__content}>
-        <img src="./../../assets/Succeful.png" alt="" />
-        <h2> Форма Успешно Отправлена </h2>
-        <Link to="/">
-          <ButtonForm type="button"  disabled={false}>
-            На главную
-          </ButtonForm>
-        </Link>
-      </div>
-      )}
-      {status === "errors" && (
-      <div className={styles.modal__content}>
-        <img src="./../../assets/Errorss.png" alt="" />
-        <h2> Ошибка</h2>
-        <Link to="/">
-          <ButtonForm type="button"  disabled={false}>
-            На главную
-          </ButtonForm>
-        </Link>
-      </div>
-      )}
-    </aside>
+
+  const status = useSelector((state: RootState) => state.modal.status);
+  const isOpen = useSelector((state: RootState) => state.modal.isOpen);
+
+  const handleCloseModal = (e: React.MouseEvent) => {
+    dispatch(setIsOpen(false));
+  }
+
+  if (!isOpen) {
+    return null;
+  } 
+
+  const modalRoot = document.getElementById("modal-root");
+  if (!modalRoot) {
+    return null;
+
+ 
+
     
+  }
+  return createPortal(
+    <div className={styles.modal}>
+      {status === "success" && (
+      <ModalSuccess 
+      onClick={handleCloseModal}/>
+      )}
+      {status === "error" && (
+      <ModalError 
+      onClick={handleCloseModal}/>
+      )}
+    </div>,
+    modalRoot
   );
 };

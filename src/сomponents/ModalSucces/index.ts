@@ -1,0 +1,2 @@
+
+export { ModalSuccess }from './ModalSuccess';

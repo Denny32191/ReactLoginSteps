@@ -5,11 +5,13 @@ import { Preference } from "./features/Preference";
 import styles from "./App.module.scss";
 import Stepper from "./features/Stepper/Stepper";
 import { Description } from "./features/Description/Description";
-import { Modal } from "./features/Modal";
-import { useSelector } from "react-redux";
+import { Modal } from './features/Modal'
+
+
+
 
 function App() {
-  const isOpen = useSelector((state: RootState) => state.modal.isOpen)
+
   return (
     <BrowserRouter>
       <div className={styles.container}>
@@ -20,9 +22,8 @@ function App() {
           <Route path="/description" element={<Description />} />
         </Routes>
       </div>
-      <Modal 
-      isOpenModal={false}
-      />
+      
+      <Modal/>
     </BrowserRouter>
   );
 }

@@ -11,7 +11,7 @@ export type ModalState = {
 };
 const initialState: ModalState = {
   isOpen: false ,
-  status: "success",
+  status: "error",
   // errors: {
   //   isOpen?: boolean;
   //   status?: boolean;
@@ -22,11 +22,11 @@ export const modalSlice = createSlice({
   initialState,
 
   reducers: {
-    setIsOpen(state, action: PayloadAction<ModalState>) {
-      state.isOpen = false;
+    setIsOpen(state, action) {
+      state.isOpen = action.payload;
 
     },
-    setStatus(state, action: PayloadAction<ModalState>) {
+    setStatus(state, action) {
       state.status = action.payload;
     },
     
