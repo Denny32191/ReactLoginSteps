@@ -26,9 +26,23 @@ export const Description = () => {
     dispatch(setSelfInput(e.target.value));
   };
 
-  // const handleNextButtonClick = () => {
-  //   dispatch(success());
-  // };
+  const OpenStatusModal = () => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const random = Math.random();
+
+        if (random < 0.5) {
+          resolve({
+            status: "success",
+          });
+        } else {
+          reject({
+            status: "error",
+          });
+        }
+      }, Math.random() * 1000);
+    });
+  };
 
   const errors = useSelector((state: RootState) => state.description.errors);
   const handleErrors = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -52,6 +66,7 @@ export const Description = () => {
       dispatch(setIsOpen(true));
       navigate("/Personal");
     }
+  
   };
 
   return (
