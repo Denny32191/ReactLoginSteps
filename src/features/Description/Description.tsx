@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { RootState } from "../../app/store";
 import { setSelfInput, setErrors } from "./descriptionSlice";
 import styles from "./Description.module.scss";
-import React from "react";
+import React, { useEffect } from "react";
 import { AInputTextArea } from "./../../сomponents/InputTextArea";
 import { ButtonForm } from "../../сomponents/ButtonForm";
 import { Modal } from "../Modal";
@@ -25,8 +25,7 @@ export const Description = () => {
   const handleSelfInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setSelfInput(e.target.value));
   };
-
-  const OpenStatusModal = () => {
+  const openStatusModal =  async () => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         const random = Math.random();
@@ -44,6 +43,7 @@ export const Description = () => {
     });
   };
 
+
   const errors = useSelector((state: RootState) => state.description.errors);
   const handleErrors = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(
@@ -55,14 +55,15 @@ export const Description = () => {
   const isValid = selfInput;
 
   const navigate = useNavigate();
-  const handleClick = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(
       setErrors({
         selfInput: !selfInput ? "Укажите что нибудь о себе)" : "",
       })
     );
-    if (isValid) {
+    if (isValid) { 
+     
       dispatch(setIsOpen(true));
       navigate("/Personal");
     }
@@ -71,7 +72,7 @@ export const Description = () => {
 
   return (
     <div className={styles.description}>
-      <form action="" onSubmit={handleClick}>
+      <form action="" onSubmit={handleSubmit}>
         <p>О Себе</p>
         <AInputTextArea
           type="text"
@@ -83,11 +84,11 @@ export const Description = () => {
         />
         <div className={styles.button__block}>
           <Link to="/">
-            <ButtonForm type="button" disabled={false}>
+            <ButtonForm type="button">
               Назад
             </ButtonForm>
           </Link>
-          <ButtonForm type="submit" disabled={false} >
+          <ButtonForm type="submit"  >
             Далее
           </ButtonForm>
           

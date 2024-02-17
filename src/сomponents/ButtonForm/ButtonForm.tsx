@@ -8,7 +8,7 @@ import React, { ChangeEvent } from "react"
 interface ButtonProps {
   type?: "submit" | "button"
   // | "reset" | "submit" | undefined
-  disabled: boolean 
+  disabled?: boolean 
   children: React.ReactNode
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }

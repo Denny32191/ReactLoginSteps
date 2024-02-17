@@ -11,7 +11,7 @@ export type ModalState = {
 };
 const initialState: ModalState = {
   isOpen: false,
-  status: "success",
+  status: null,
 
   // errors: {
   //   isOpen?: boolean;
