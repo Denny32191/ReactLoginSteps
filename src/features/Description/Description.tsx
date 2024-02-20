@@ -6,15 +6,19 @@ import styles from "./Description.module.scss";
 import React, { useEffect } from "react";
 import { AInputTextArea } from "./../../сomponents/InputTextArea";
 import { ButtonForm } from "../../сomponents/ButtonForm";
+import { setStatus } from './../Modal/modalSlice'
 import { Modal } from "../Modal";
 import { setIsOpen } from "../Modal/modalSlice";
+import { error } from "console";
 
 export const Description = () => {
-  const isOpen = useSelector((state:RootState) => state.modal.isOpen)
-  const handleIsOpen = (e: React.ChangeEvent<MouseEvent>) => {
-    dispatch(setIsOpen(false))
-  }
   const dispatch = useDispatch();
+
+  const isOpen = useSelector((state: RootState) => state.modal.isOpen);
+  const status = useSelector((state: RootState) => state.modal.status);
+  const handleIsOpen = (e: React.ChangeEvent<MouseEvent>) => {
+    dispatch(setIsOpen(false));
+  };
 
   const state = useSelector((state: RootState) => state);
   console.log(state);
@@ -25,7 +29,8 @@ export const Description = () => {
   const handleSelfInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setSelfInput(e.target.value));
   };
-  const openStatusModal =  async () => {
+
+  const openStatusModal = () => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         const random = Math.random();
@@ -43,7 +48,6 @@ export const Description = () => {
     });
   };
 
-
   const errors = useSelector((state: RootState) => state.description.errors);
   const handleErrors = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(
@@ -55,19 +59,24 @@ export const Description = () => {
   const isValid = selfInput;
 
   const navigate = useNavigate();
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(
       setErrors({
         selfInput: !selfInput ? "Укажите что нибудь о себе)" : "",
       })
     );
-    if (isValid) { 
-     
-      dispatch(setIsOpen(true));
-      navigate("/Personal");
+    if (isValid) {
+      openStatusModal()
+      .then((status) => {
+        dispatch(setStatus(status));
+        dispatch(setIsOpen(true));
+      })
+      .catch((error) => {
+        dispatch(setStatus(error));
+        dispatch(setIsOpen(true));
+      });
     }
-  
   };
 
   return (
@@ -84,17 +93,11 @@ export const Description = () => {
         />
         <div className={styles.button__block}>
           <Link to="/">
-            <ButtonForm type="button">
-              Назад
-            </ButtonForm>
+            <ButtonForm type="button">Назад</ButtonForm>
           </Link>
-          <ButtonForm type="submit"  >
-            Далее
-          </ButtonForm>
-          
+          <ButtonForm type="submit">Далее</ButtonForm>
         </div>
       </form>
-
     </div>
   );
 };

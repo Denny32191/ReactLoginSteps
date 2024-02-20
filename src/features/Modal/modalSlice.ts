@@ -23,7 +23,7 @@ export const modalSlice = createSlice({
   initialState,
 
   reducers: {
-    setIsOpen(state, action) {
+    setIsOpen(state, action: PayloadAction<boolean>) {
       state.isOpen = action.payload;
     },
     setStatus(state, action) {
