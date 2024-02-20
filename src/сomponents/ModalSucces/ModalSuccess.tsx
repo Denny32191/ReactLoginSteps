@@ -1,7 +1,7 @@
 import { ChangeEvent } from "react";
 import { ButtonForm } from "../ButtonForm";
 import styles from "./ModalSuccess.module.scss";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import icons8 from "../../assets/icons8.png";
 
 interface ModalSuccessProps {

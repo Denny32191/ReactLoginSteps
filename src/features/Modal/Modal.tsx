@@ -23,7 +23,7 @@ export const Modal = () => {
   if (!isOpen) {
     return null;
   }
-
+console.log(isOpen)
 
   return createPortal(
     <div className={styles.modal}>

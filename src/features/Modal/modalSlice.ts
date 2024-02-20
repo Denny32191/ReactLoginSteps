@@ -26,7 +26,7 @@ export const modalSlice = createSlice({
     setIsOpen(state, action: PayloadAction<boolean>) {
       state.isOpen = action.payload;
     },
-    setStatus(state, action) {
+    setStatus(state, action: PayloadAction<"success" | "error" | null>) {
       state.status = action.payload;
     },
   },

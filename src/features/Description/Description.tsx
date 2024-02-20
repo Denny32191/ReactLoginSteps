@@ -6,10 +6,28 @@ import styles from "./Description.module.scss";
 import React, { useEffect } from "react";
 import { AInputTextArea } from "./../../сomponents/InputTextArea";
 import { ButtonForm } from "../../сomponents/ButtonForm";
-import { setStatus } from './../Modal/modalSlice'
+import { setStatus } from "./../Modal/modalSlice";
 import { Modal } from "../Modal";
 import { setIsOpen } from "../Modal/modalSlice";
 import { error } from "console";
+
+const sendFormDataMock = (): Promise<{ status: 'success' | 'error' }>  => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const random = Math.random();
+
+      if (random < 0.5) {
+        resolve({
+          status: "success",
+        });
+      } else {
+        reject({
+          status: "error",
+        });
+      }
+    }, Math.random() * 1000);
+  });
+};
 
 export const Description = () => {
   const dispatch = useDispatch();
@@ -30,24 +48,6 @@ export const Description = () => {
     dispatch(setSelfInput(e.target.value));
   };
 
-  const openStatusModal = () => {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        const random = Math.random();
-
-        if (random < 0.5) {
-          resolve({
-            status: "success",
-          });
-        } else {
-          reject({
-            status: "error",
-          });
-        }
-      }, Math.random() * 1000);
-    });
-  };
-
   const errors = useSelector((state: RootState) => state.description.errors);
   const handleErrors = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(
@@ -59,7 +59,7 @@ export const Description = () => {
   const isValid = selfInput;
 
   const navigate = useNavigate();
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit =  (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(
       setErrors({
@@ -67,15 +67,15 @@ export const Description = () => {
       })
     );
     if (isValid) {
-      openStatusModal()
-      .then((status) => {
-        dispatch(setStatus(status));
+      sendFormDataMock().then((data) => {  
+        console.log(status);
+        dispatch(setStatus(data.status));
         dispatch(setIsOpen(true));
       })
-      .catch((error) => {
-        dispatch(setStatus(error));
+      .catch((data) => {
+        dispatch(setStatus(data.status));
         dispatch(setIsOpen(true));
-      });
+      })
     }
   };
 
